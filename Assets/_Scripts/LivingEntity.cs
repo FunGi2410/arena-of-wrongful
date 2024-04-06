@@ -14,7 +14,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
     public void TakeDame(float dame)
     {
         this.health -= dame;
-        print("Cur Health: " + this.health);
+        print(name + " Cur Health: " + this.health);
 
         if (this.OnTakeDame != null)
         {
@@ -35,6 +35,6 @@ public class LivingEntity : MonoBehaviour, IDamageable
         {
             this.OnDeath();
         }
-        //GameObject.Destroy(gameObject);
+        GameObject.Destroy(gameObject);
     }
 }

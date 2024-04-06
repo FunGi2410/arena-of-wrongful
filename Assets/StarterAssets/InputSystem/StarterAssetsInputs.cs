@@ -12,6 +12,9 @@ namespace StarterAssets
 		public Vector2 look;
 		public bool jump;
 		public bool sprint;
+		// My properties
+		public bool isAiming;
+		public bool isShooting;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -43,6 +46,18 @@ namespace StarterAssets
 		{
 			SprintInput(value.isPressed);
 		}
+
+		// My method
+		public void OnAiming(InputValue value)
+		{
+			AimingInput(value.isPressed);
+		}
+
+		public void OnShooting(InputValue value)
+		{
+			print("click");
+			ShootingInput(value.isPressed);
+		}
 #endif
 
 
@@ -65,7 +80,19 @@ namespace StarterAssets
 		{
 			sprint = newSprintState;
 		}
-		
+
+		public void AimingInput(bool newAimState)
+		{
+			print("click right mouse");
+			isAiming = newAimState;
+		}
+
+		public void ShootingInput(bool newShootState)
+        {
+			print("click left mouse");
+			isShooting = newShootState;
+        }
+
 		private void OnApplicationFocus(bool hasFocus)
 		{
 			SetCursorState(cursorLocked);
