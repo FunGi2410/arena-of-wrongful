@@ -126,6 +126,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &165879379 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5534211541097746430, guid: 5051ff5e42c4fda418a2b23264dc736c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2069168197}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &207370090 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8338988566280778637, guid: 5051ff5e42c4fda418a2b23264dc736c,
@@ -971,6 +977,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2712704481995498387, guid: 5051ff5e42c4fda418a2b23264dc736c,
+        type: 3}
+      propertyPath: arrowPoint
+      value: 
+      objectReference: {fileID: 165879379}
+    - target: {fileID: 2712704481995498387, guid: 5051ff5e42c4fda418a2b23264dc736c,
+        type: 3}
+      propertyPath: arrowObject
+      value: 
+      objectReference: {fileID: 8048093435683306569, guid: e078e7db29fa50349b21f375d98a5fed,
+        type: 3}
     - target: {fileID: 3893294197879345259, guid: 5051ff5e42c4fda418a2b23264dc736c,
         type: 3}
       propertyPath: m_RootOrder
@@ -1025,6 +1042,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4044610844144992070, guid: 5051ff5e42c4fda418a2b23264dc736c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.164
+      objectReference: {fileID: 0}
+    - target: {fileID: 4044610844144992070, guid: 5051ff5e42c4fda418a2b23264dc736c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.121
       objectReference: {fileID: 0}
     - target: {fileID: 4416926081852918481, guid: 5051ff5e42c4fda418a2b23264dc736c,
         type: 3}
