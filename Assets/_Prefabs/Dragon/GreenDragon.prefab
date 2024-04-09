@@ -616,6 +616,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3432500017483332428}
   - component: {fileID: 3432500017473764156}
+  - component: {fileID: 5068557307027037926}
   m_Layer: 0
   m_Name: GreenDragon
   m_TagString: Untagged
@@ -661,6 +662,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &5068557307027037926
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3432500017482982922}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.1801796, y: 4.470861, z: 5.11324}
+  m_Center: {x: 0.13656616, y: 1.735431, z: 0.49794942}
 --- !u!1 &3432500017482987278
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
     [SerializeField] private float timeToDes = 10f;
+    float dame = 2;
     void Start()
     {
         Destroy(gameObject, this.timeToDes);
@@ -14,5 +15,12 @@ public class Arrow : MonoBehaviour
     {
         Debug.Log("Collided " + other.name);
         Destroy(transform.GetComponent<Rigidbody>());
+
+        if (!other.gameObject.CompareTag("Dragon")) return;
+        IDamageable damageableObject = other.gameObject.GetComponent<IDamageable>();
+        if (damageableObject != null)
+        {
+            damageableObject.TakeDame(dame);
+        }
     }
 }

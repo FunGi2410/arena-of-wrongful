@@ -10,6 +10,8 @@ public class PatrollState : StateMachineBehaviour
     NavMeshAgent agent;
 
     List<Transform> wayPoints = new List<Transform>();
+    Transform player;
+    float rangeChase = 8;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         agent = animator.GetComponent<NavMeshAgent>();
@@ -21,6 +23,8 @@ public class PatrollState : StateMachineBehaviour
         }
 
         agent.SetDestination(wayPoints[Random.Range(0, wayPoints.Count)].position);
+
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -34,6 +38,11 @@ public class PatrollState : StateMachineBehaviour
         timer += Time.deltaTime;
         if (timer >= timeToPatroll)
             animator.SetBool("isPatrolling", false);
+
+        // Chasing
+        float distance = Vector3.Distance(animator.transform.position, player.position);
+        if (distance < rangeChase)
+            animator.SetBool("isChasing", true);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
