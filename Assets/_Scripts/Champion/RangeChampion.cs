@@ -10,6 +10,6 @@ public class RangeChampion : Champion
     protected override void Start()
     {
         this.startingHealth = this.rangeChampion_SO.health;
-        this.health = this.startingHealth;
+        this.Health = this.startingHealth;
     }
 }

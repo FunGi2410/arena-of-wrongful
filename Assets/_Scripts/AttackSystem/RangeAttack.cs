@@ -7,41 +7,71 @@ public class RangeAttack : Attack
     [SerializeField] private GameObject arrowObject;
     [SerializeField] private Transform arrowPoint;
 
+    public LayerMask enemyLayer;
+    public float range = 5;
+
+    Transform weakestEnemy;
+
     protected override void NormalAttack()
     {
-        AimShoot();
-    }
-
-    /*private void Start()
-    {
-        Instantiate(this.arrowObject, pos, this.arrowObject.transform.rotation);
-        Instantiate(this.arrowObject, pos2, Quaternion.identity);
-    }*/
-
-    private void Update()
-    {
-        NormalAttack();
-    }
-
-    private void AimShoot()
-    {
-        if(_input.isAiming && !_input.sprint && _controller.Grounded)
+        /*float normalizedSpeed = Mathf.InverseLerp(5, 10, fireRate);
+        _controller.Animator.SetFloat("AttackSpeed", normalizedSpeed);*/
+        if (CheckFireRate() && this.isAttack && !_input.sprint && _controller.Grounded)
         {
             // play animation
-            _controller.Animator.SetBool("Aiming", _input.isAiming);
-            _controller.Animator.SetBool("Shooting", _input.isAiming);
+            _controller.Animator.SetBool("Shooting", true);
         }
         else
         {
             // stop animation
-            _controller.Animator.SetBool("Aiming", false);
             _controller.Animator.SetBool("Shooting", false);
         }
     }
 
+    private void Update()
+    {
+        if (_input.move.sqrMagnitude != 0)
+        {
+            this.isAttack = false;
+            return;
+        }
+        if (_input.isAiming) this.isAttack = true;
+        NormalAttack();
+    }
+    
     public void Shoot()
     {
+        Collider[] hitEnemies = Physics.OverlapSphere(transform.position, range, enemyLayer);
+        if (hitEnemies.Length > 0)
+        {
+            weakestEnemy = hitEnemies[0].transform;
+            for (int i = 1; i < hitEnemies.Length; i++)
+            {
+                if (hitEnemies[i].GetComponent<LivingEntity>().Health < weakestEnemy.GetComponent<LivingEntity>().Health)
+                {
+                    weakestEnemy = hitEnemies[i].transform;
+                }
+            }
+        }
+        else weakestEnemy = null; // Dont have any enemy detect, so player shoot foward
+
+        transform.LookAt(weakestEnemy);
         GameObject arrow = Instantiate(this.arrowObject, this.arrowPoint.position, transform.rotation);
-        arrow.GetComponent<Rigidbody>().AddForce(transform.forward * 25f, ForceMode.Impulse);
+        arrow.GetComponent<Arrow>().SetTarget(weakestEnemy);
+    }
+
+    public void SetProjectile (GameObject newObject)
+    {
+        this.arrowObject = newObject;
+    }
+
+    public void SetPointOriginToFire(Transform newPoint)
+    {
+        this.arrowPoint = newPoint;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, range);
     }
 }

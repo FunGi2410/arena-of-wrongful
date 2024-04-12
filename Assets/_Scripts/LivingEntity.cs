@@ -5,23 +5,25 @@ using UnityEngine;
 public class LivingEntity : MonoBehaviour, IDamageable
 {
     public float startingHealth;
-    [SerializeField] protected float health;
+    [SerializeField] private float health;
     protected bool dead;
+
+    public float Health { get => health; set => health = value; }
 
     public event System.Action OnDeath;
     public event System.Action OnTakeDame;
 
     public virtual void TakeDame(float dame)
     {
-        this.health -= dame;
-        print(name + " Cur Health: " + this.health);
+        this.Health -= dame;
+        print(name + " Cur Health: " + this.Health);
 
         if (this.OnTakeDame != null)
         {
             this.OnTakeDame();
         }
 
-        if (this.health <= 0 && !this.dead)
+        if (this.Health <= 0 && !this.dead)
         {
             this.Die();
         }

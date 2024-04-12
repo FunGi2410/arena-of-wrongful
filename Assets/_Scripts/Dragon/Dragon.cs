@@ -11,13 +11,13 @@ public class Dragon : LivingEntity
     private void Start()
     {
         this.animator = GetComponent<Animator>();
-        this.healthBar.value = health;
+        this.healthBar.value = Health;
     }
     public override void TakeDame(float dame)
     {
         base.TakeDame(dame);
         this.animator.SetTrigger("damage");
-        this.healthBar.value = health;
+        this.healthBar.value = Health;
     }
 
     protected override void Die()

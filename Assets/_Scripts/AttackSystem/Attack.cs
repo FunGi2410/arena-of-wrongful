@@ -6,11 +6,14 @@ using UnityEngine.InputSystem;
 
 public abstract class Attack : MonoBehaviour
 {
-    private bool isAttack = true;
-    [SerializeField] private float coolDown = 0.5f;
+    protected bool isAttack = false;
+    //[SerializeField] private float coolDown = 0.5f;
 
     protected StarterAssetsInputs _input;
     protected ThirdPersonController _controller;
+
+    float nextTimeToFire = 0f;
+    [SerializeField] float fireRate = 5f;
 
     private void Start()
     {
@@ -20,9 +23,19 @@ public abstract class Attack : MonoBehaviour
 
     protected abstract void NormalAttack();
 
-    IEnumerator ResetAttackCoolDown()
+    protected bool CheckFireRate()
+    {
+        if (Time.time >= this.nextTimeToFire)
+        {
+            this.nextTimeToFire = Time.time + (1f / this.fireRate);
+            return true;
+        }
+        return false;
+    }
+
+    /*IEnumerator ResetAttackCoolDown()
     {
         yield return new WaitForSeconds(this.coolDown);
         this.isAttack = true;
-    }
+    }*/
 }

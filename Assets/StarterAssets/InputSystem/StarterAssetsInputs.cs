@@ -83,7 +83,6 @@ namespace StarterAssets
 
 		public void AimingInput(bool newAimState)
 		{
-			print("click right mouse");
 			isAiming = newAimState;
 		}
 
