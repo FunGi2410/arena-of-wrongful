@@ -16,6 +16,7 @@ public class AttackCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Destroy(transform.GetComponent<Rigidbody>());
         IDamageable damageableObject = other.gameObject.GetComponent<IDamageable>();
         if (damageableObject != null)
         {

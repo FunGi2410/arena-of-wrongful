@@ -41,6 +41,11 @@ public class Arrow : MonoBehaviour
         }
     }
 
+    public void SetSpeed(float newSpeed)
+    {
+        this.speed = newSpeed;
+    }
+
     public void SetTarget(Transform target)
     {
         this.target = target;
@@ -49,7 +54,8 @@ public class Arrow : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log("Collided " + other.name);
-        Destroy(transform.GetComponent<Rigidbody>());
+        //Destroy(transform.GetComponent<Rigidbody>());
+        Destroy(gameObject);
 
         if (!other.gameObject.CompareTag("Dragon")) return;
         IDamageable damageableObject = other.gameObject.GetComponent<IDamageable>();

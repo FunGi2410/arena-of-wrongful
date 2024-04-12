@@ -25,7 +25,6 @@ public class AbilityHolder : MonoBehaviour
             case AbilityState.ready:
                 if (Input.GetKeyDown(key))
                 {
-                    print("Skill");
                     ability.Activate(gameObject);
                     state = AbilityState.active;
                     activeTime = ability.activeTime;
@@ -38,6 +37,7 @@ public class AbilityHolder : MonoBehaviour
                 }
                 else
                 {
+                    ability.EndActivate(gameObject);
                     state = AbilityState.cooldown;
                     cooldownTime = ability.cooldownTime;
                 }

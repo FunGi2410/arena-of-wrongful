@@ -4,13 +4,24 @@ using UnityEngine;
 
 public class RangeAttack : Attack
 {
-    [SerializeField] private GameObject arrowObject;
-    [SerializeField] private Transform arrowPoint;
+    [SerializeField] private GameObject originalProjectile;
+    [SerializeField] private Transform originalPoint;
+    [SerializeField] private float originalSpeedProjectile;
+
+    GameObject arrowObject;
+    Transform arrowPoint;
+    float speedProjectile = 15f;
 
     public LayerMask enemyLayer;
     public float range = 5;
 
     Transform weakestEnemy;
+
+    protected override void Start()
+    {
+        base.Start();
+        SetReturnOriginal();
+    }
 
     protected override void NormalAttack()
     {
@@ -56,8 +67,15 @@ public class RangeAttack : Attack
         else weakestEnemy = null; // Dont have any enemy detect, so player shoot foward
 
         transform.LookAt(weakestEnemy);
-        GameObject arrow = Instantiate(this.arrowObject, this.arrowPoint.position, transform.rotation);
-        arrow.GetComponent<Arrow>().SetTarget(weakestEnemy);
+        Arrow arrow = Instantiate(this.arrowObject, this.arrowPoint.position, transform.rotation).GetComponent<Arrow>();
+        arrow.SetTarget(weakestEnemy);
+        arrow.SetSpeed(speedProjectile);
+        
+    }
+
+    public void SetSpeedProjectile(float newSpeed)
+    {
+        this.speedProjectile = newSpeed;
     }
 
     public void SetProjectile (GameObject newObject)
@@ -68,6 +86,13 @@ public class RangeAttack : Attack
     public void SetPointOriginToFire(Transform newPoint)
     {
         this.arrowPoint = newPoint;
+    }
+
+    public void SetReturnOriginal()
+    {
+        this.arrowObject = originalProjectile;
+        this.arrowPoint = originalPoint;
+        this.speedProjectile = originalSpeedProjectile;
     }
 
     private void OnDrawGizmosSelected()

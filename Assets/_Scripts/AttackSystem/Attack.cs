@@ -15,7 +15,7 @@ public abstract class Attack : MonoBehaviour
     float nextTimeToFire = 0f;
     [SerializeField] float fireRate = 5f;
 
-    private void Start()
+    protected virtual void Start()
     {
         _input = GetComponent<StarterAssetsInputs>();
         _controller = GetComponent<ThirdPersonController>();

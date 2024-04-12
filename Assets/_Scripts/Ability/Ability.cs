@@ -9,4 +9,5 @@ public abstract class Ability : ScriptableObject
     public float activeTime;
 
     public abstract void Activate(GameObject parent);
+    public abstract void EndActivate(GameObject parent);
 }
