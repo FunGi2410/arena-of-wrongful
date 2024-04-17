@@ -15,6 +15,7 @@ MonoBehaviour:
   name: Xa Tien
   cooldownTime: 2
   activeTime: 1
+  abKey: 104
   projectilePref: {fileID: 5087393779003588581, guid: 88904218f149ca344b0de8e5b2b470e1,
     type: 3}
   origin: {fileID: 0}

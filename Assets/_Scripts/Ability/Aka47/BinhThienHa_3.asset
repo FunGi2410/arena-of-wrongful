@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: BinhThienHa_3
   m_EditorClassIdentifier: 
   name: Binh Thien Ha
-  cooldownTime: 2
-  activeTime: 3
+  cooldownTime: 3
+  activeTime: 4
+  abKey: 106
   multiAkGun: {fileID: 4775628890723487104, guid: 5cbe36378bbb70c4395421cd66f66b05,
     type: 3}
   origin: {fileID: 0}

@@ -1414,8 +1414,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cd49580f3a1976458832fb78a1cf3ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ability: {fileID: 11400000, guid: 833fcc0a62823e145ba57b1e48379db9, type: 2}
-  key: 103
+  abilities:
+  - {fileID: 11400000, guid: 2e6247201216ae249b35bc00e394ed10, type: 2}
+  - {fileID: 11400000, guid: 833fcc0a62823e145ba57b1e48379db9, type: 2}
+  - {fileID: 11400000, guid: c91f0f5c71f0e764cac2c7cf796c1e74, type: 2}
 --- !u!1 &4523139366846529165
 GameObject:
   m_ObjectHideFlags: 0

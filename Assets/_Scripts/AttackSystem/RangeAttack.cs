@@ -23,6 +23,17 @@ public class RangeAttack : Attack
         SetReturnOriginal();
     }
 
+    private void Update()
+    {
+        if (_input.move.sqrMagnitude != 0)
+        {
+            this.isAttack = false;
+            return;
+        }
+        if (_input.isAiming) this.isAttack = true;
+        NormalAttack();
+    }
+
     protected override void NormalAttack()
     {
         /*float normalizedSpeed = Mathf.InverseLerp(5, 10, fireRate);
@@ -39,17 +50,7 @@ public class RangeAttack : Attack
         }
     }
 
-    private void Update()
-    {
-        if (_input.move.sqrMagnitude != 0)
-        {
-            this.isAttack = false;
-            return;
-        }
-        if (_input.isAiming) this.isAttack = true;
-        NormalAttack();
-    }
-    
+    // Called in event animation shooting
     public void Shoot()
     {
         Collider[] hitEnemies = Physics.OverlapSphere(transform.position, range, enemyLayer);
