@@ -26,6 +26,13 @@ public class MeleeWeapon : MonoBehaviour
             {
                 print("damage " + hit.transform.gameObject.name);
                 hitObjects.Add(hit.transform.gameObject);
+
+                // Take dame
+                IDamageable damageableObject = hit.transform.gameObject.GetComponent<IDamageable>();
+                if (damageableObject != null)
+                {
+                    damageableObject.TakeDame(this.weaponDamage);
+                }
             }
         }
     }

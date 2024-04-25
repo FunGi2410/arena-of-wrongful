@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9cdfc463fb29f144983395eb9dd8ed4, type: 3}
+  m_Name: BongLo_2
+  m_EditorClassIdentifier: 
+  name: Bong Lo
+  cooldownTime: 2
+  activeTime: 3
+  abKey: 107
+  objPref: {fileID: 8216696166013776105, guid: c1d921074ccd69a4ab91ddffbc6d3284, type: 3}
+  origin: {fileID: 0}

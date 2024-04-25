@@ -5,6 +5,9 @@ using UnityEngine;
 public class MeleeAttack : Attack
 {
     [SerializeField] Transform curWeaponHolder;
+
+    public Transform CurWeaponHolder { get => curWeaponHolder; set => curWeaponHolder = value; }
+
     private void Update()
     {
         if (_input.move.sqrMagnitude != 0)
@@ -34,11 +37,11 @@ public class MeleeAttack : Attack
 
     public void StartDamage()
     {
-        this.curWeaponHolder.GetComponentInChildren<MeleeWeapon>().StartDamage();
+        this.CurWeaponHolder.GetComponentInChildren<MeleeWeapon>().StartDamage();
     }
 
     public void EndDamage()
     {
-        this.curWeaponHolder.GetComponentInChildren<MeleeWeapon>().EndDamage();
+        this.CurWeaponHolder.GetComponentInChildren<MeleeWeapon>().EndDamage();
     }
 }
